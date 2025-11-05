@@ -77,6 +77,17 @@ fun Mainscreen(name: String, studentID: Int, modifier: Modifier = Modifier) {
                 Text("Start Activity Implicitly")
             }
 
+            //start of assignment 4
+            // View Image Activity button
+            Button(
+                onClick = {
+                    val intent = Intent(context, ViewImageActivity::class.java)
+                    context.startActivity(intent)
+                }
+            ) {
+                Text("View Image Activity")
+            }
+
         }
     }
 }
