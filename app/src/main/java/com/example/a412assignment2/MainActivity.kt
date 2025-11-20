@@ -20,11 +20,29 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material3.Button
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //request custom permission at runtime
+        if (ContextCompat.checkSelfPermission(
+                this,
+                "com.example.a412assignment2.MSE412"
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf("com.example.a412assignment2.MSE412"),
+                100
+            )
+        }
+
         enableEdgeToEdge()
         setContent {
             _412Assignment2Theme {
@@ -70,8 +88,9 @@ fun Mainscreen(name: String, studentID: Int, modifier: Modifier = Modifier) {
             //Implicit button
             Button(
                 onClick = {
-                    val intent = Intent("com.example.a412assignment2.SECOND_ACTIVITY")
+                    val intent = Intent("com.example.a412assignment2.OPEN_SECOND_ACTIVITY")
                     context.startActivity(intent)
+
                 }
             ) {
                 Text("Start Activity Implicitly")

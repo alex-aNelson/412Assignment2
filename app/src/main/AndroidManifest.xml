@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     >
+    <permission
+        android:name="com.example.a412assignment2.MSE412"
+        android:protectionLevel="dangerous" />
+
+    <uses-permission android:name="com.example.a412assignment2.MSE412" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
@@ -26,6 +31,7 @@
         <activity
             android:name=".SecondActivity"
             android:exported="true"
+            android:permission="com.example.a412assignment2.MSE412"
             android:label="Second Activity">
             <intent-filter>
                 <action android:name="com.example.a412assignment2.OPEN_SECOND_ACTIVITY"/>
